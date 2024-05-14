@@ -68,13 +68,9 @@ let words = [
     {
         word: "victory",
         hint: "The act of winning or defeating an opponent."
-    }, {
-        word: "ramadan",
-        hint: "The month of namaazi parhezgaar"
-    }, {
-        word: "abdullah",
-        hint: "Jandu CR lekin J ki jaga G ayega"
-    },{
+    },
+    {
+    
         word: "Phone",
         hint: "One thing another then oxygen that you can't live without"
     },
