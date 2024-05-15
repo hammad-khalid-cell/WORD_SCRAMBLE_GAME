@@ -114,6 +114,35 @@ Clears the input field and sets its maximum length.
 
 6.....
 
+const checkWord = () => {
+    let userWord = inputText.value.toLowerCase(); // Retrieves the user's guess and converts it to lowercase
+    if (!userWord)
+        return alert("Please enter the word to check!"); // Displays an alert if the input field is empty
+    if (userWord != correctWord) {
+        return alert(`Oops! ${userWord} is not the correct word`); // Displays an alert if the guess is incorrect
+    } else {
+        alert(`Congratulations! ${correctWord.toUpperCase()} is the correct word `); // Displays an alert if the guess is correct
+        initGame(); // Restarts the game
+    }
+};
+
+checkWord is a function that checks the player's input against the correct word.
+It first retrieves the value of the input field, which contains the player's guess, and converts it to lowercase using toLowerCase() method. This ensures that the comparison is case-insensitive.
+It then checks if the input field is empty. If it is, it displays an alert asking the player to enter a word.
+If the input field is not empty, it compares the user's guess (userWord) with the correct word (correctWord). If they are not the same, it displays an alert informing the player that their guess is incorrect.
+If the user's guess matches the correct word, it displays an alert congratulating the player and showing the correct word in uppercase (correctWord.toUpperCase()).
+After displaying the alert, it calls the initGame function to restart the game
+
+7.....
+
+refreshBtn.addEventListener("click", initGame); // Event listener for the refresh button, initializes the game when clicked
+checkBtn.addEventListener("click", checkWord); // Event listener for the check button, checks the word when clicked
+
+
+These lines add event listeners to the refresh and check buttons.
+When the refresh button is clicked (refreshBtn.addEventListener), it calls the initGame function, effectively starting a new game.
+When the check button is clicked (checkBtn.addEventListener), it calls the checkWord function to check the player's guess against the correct word
+
 
 
 
