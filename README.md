@@ -33,3 +33,95 @@ The game utilizes several math functions to generate random numbers, shuffle arr
 
 Math.random(): Generates a random floating-point number between 0 and 1.
 Math.floor(): Rounds a number down to the nearest integer.
+
+================================WORKING===============================
+1.....
+
+const wordText = document.querySelector(".word"),
+    hintText = document.querySelector(".hint span"),
+    timeText = document.querySelector(".time b"),
+    inputText = document.querySelector(".input"),
+    refreshBtn = document.querySelector(".refresh-word"),
+    checkBtn = document.querySelector(".check-word");
+
+These lines define variables by selecting elements from the HTML document. Each variable represents an element in the game:
+wordText: Element displaying the scrambled word.
+hintText: Element displaying the hint.
+timeText: Element displaying the timer.
+inputText: Input field where the player enters their guess.
+refreshBtn: Button for refreshing the game.
+checkBtn: Button for checking the player's guess.
+
+2......
+
+let correctWord, timer;
+
+Declares variables correctWord and timer to be used later in the code.
+
+3......
+
+const initTimer = (maxTime) => {
+    clearInterval(timer);
+    timer = setInterval(() => {
+        if (maxTime > 0) {
+            maxTime--;
+            return (timeText.innerHTML = maxTime);
+        }
+        else {
+            alert(`Time off! ${correctWord.toUpperCase()} was the correct word`);
+            initGame();
+        }
+    }, 1000);
+};
+
+Defines a function initTimer that initializes and starts the timer countdown. It takes maxTime as a parameter, representing the maximum time in seconds.
+until the time is greater than zero seconds the loop will continue to iterate down ,when it becomes zero it will display an alert message on the screen showing that your 
+time is off.
+
+4......
+
+let words = [
+    
+];
+Defines an array of objects containing words and hints for the game.
+
+5.....
+
+const initGame = () => {
+    initTimer(30); // Starts the timer with 30 seconds
+    let randomObj = words[Math.floor(Math.random() * words.length)]; // Selects a random word from the array
+    let wordArray = randomObj.word.split(""); // Splits the word into an array of characters
+    for (let i = wordArray.length - 1; i > 0; i--) { // Shuffles the characters of the word
+        let j = Math.floor(Math.random() * (i + 1));
+        [wordArray[i], wordArray[j]] = [wordArray[j], wordArray[i]];
+    }
+    wordText.innerText = wordArray.join(""); // Displays the shuffled word
+    hintText.innerText = randomObj.hint; // Displays the hint
+    correctWord = randomObj.word.toLowerCase(); // Stores the correct word in lowercase
+    inputText.value = ""; // Clears the input field
+    inputText.setAttribute("maxlength", correctWord.length); // Sets the maximum length for the input field
+};
+initGame(); // Initializes the game when the script is executed
+
+
+Defines a function initGame that initializes the game state:
+Starts the timer with 30 seconds.
+Selects a random word from the words array.
+Shuffles the characters of the word.
+Displays the shuffled word and its hint.
+Stores the correct word in lowercase.
+Clears the input field and sets its maximum length.
+
+6.....
+
+
+
+
+
+
+
+
+
+
+
+
